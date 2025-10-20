@@ -1,0 +1,28 @@
+
+.algemeenBlock ol li{
+    list-style: decimal;
+}
+
+.algemeenBlock ul li{
+    list-style: disc;
+}
+
+.algemeenBlock ol, .algemeenBlock ul{
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.algemeen h3{
+    margin: .8rem 0;
+}
+
+
+.algemeen p{
+    margin-bottom: .8rem;
+    
+}
+
+.algemeenBlock{
+    margin-bottom: 1rem;
+}
+

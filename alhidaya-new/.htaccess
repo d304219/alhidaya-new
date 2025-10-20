@@ -1,0 +1,67 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^sponsor$ donatie.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^contact$ contact.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^islam$ deislam.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^overons$ overons.php [L]
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^algemeen$ algemeen.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^privacy$ privacy.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^educatie$ educatie.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^seminar$ seminar.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^vrijwilligers$ vrijwilligers.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^iftarbekostigen$ iftarbekostigen.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^ramadancup$ ramadancup.php [L]
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^Itikaf Itikaf.php [L]
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^donatieactie donatieactie.php [L]
+</IfModule>
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteRule ^korancompetitie korancompetitie.php [L]
+</IfModule>

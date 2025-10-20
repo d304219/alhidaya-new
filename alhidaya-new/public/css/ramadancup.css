@@ -1,0 +1,111 @@
+.heading {
+    padding: 27px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-bottom: 35px;
+}
+.headingText h2 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.ramadanCupGroup {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.ramadanCupInfo p {
+    margin-bottom: 4rem !important;
+    margin-top: 2rem;
+}
+.ramadanCupInfo, .ramadanCupImg {
+    flex: 1;
+}
+.ramadanCupImg {
+    max-width: 117% ;
+    height: auto;
+    align-items: center; /* Zorgt voor verticale uitlijning */
+}
+.ramadanCupImg img {
+    width: 68% ;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding dezelfde hoogte heeft */
+}
+
+
+.info-box {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+}
+.info-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 calc(50% - 10px); /* 2 items per rij */
+    box-sizing: border-box;
+}
+.info-item i {
+    font-size: 20px;
+    color: #28a745;
+    margin-right: 10px;
+}
+@media (max-width: 413px) {
+    .registration-form {
+        padding: 9px !important;
+    }
+    .headingText h2 {
+        font-size: 1.8rem !important;
+    }
+    .ramadanCupImgMobile img {
+        width: 97% !important;
+    }
+}
+@media (max-width: 763px) {
+    .headingText h2 {
+        font-size: 2rem !important;
+    }
+}
+.btn-submit {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #218838;
+}
+
+.btn-submit:active {
+    background-color: #1e7e34;
+}
+.message-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

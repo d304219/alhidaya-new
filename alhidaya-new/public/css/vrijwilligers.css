@@ -1,0 +1,168 @@
+input, textarea, select {
+    border: 1px solid #ccc;
+    padding: .7rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #5c6bc0;
+    outline: none;
+    box-shadow: 0 0 5px rgba(92, 107, 192, 0.5);
+}
+
+#submitButton:hover {
+    background-color: #3949ab;
+}
+
+#permission {
+    position: relative;
+    cursor: pointer;
+}
+
+label {
+    font-weight: 700;
+    color: #333;
+}
+
+form {
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.meerkeuze {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meerkeuze label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    margin: 0;
+    cursor: pointer;
+}
+
+.meerkeuze input[type="radio"] {
+    margin: 0;
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+#permission {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+#permission label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.nameGrid {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'first last';
+}
+
+.firstName {
+    grid-area: first;
+}
+
+.lastName {
+    grid-area: last;
+}
+
+.adresGrid {
+    display: grid;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'street street'
+    'postcode place'
+    'country country';
+}
+
+.street {
+    grid-area: street;
+}
+
+.postcode {
+    grid-area: postcode;
+}
+
+.place {
+    grid-area: place;
+}
+
+.country {
+    grid-area: country;
+}
+
+.must {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.column {
+    width: 48%;
+    overflow: hidden;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.contactForm {
+    background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+
+    .column {
+        width: 100% !important;
+    }
+}

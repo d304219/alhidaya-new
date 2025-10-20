@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "globalcitizen/php-iban": "4.2.1"
+    }
+}
