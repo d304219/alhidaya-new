@@ -30,24 +30,41 @@
         <p>De Profeet ﷺ zei : "Wie een pad bewandelt op zoek naar kennis, Allah zal voor hem het pad naar het Paradijs gemakkelijk maken. Mensen komen niet samen in de huizen van Allah, om het boek van Allah te reciteren en het samen te bestuderen, maar de rust zal op hen neerdalen, genade zal hen bedekken, engelen zullen hen omringen, en Allah zal hen vermelden aan degenen die dicht bij hem staan."</p>
         <p><i>- Ṣaḥīḥ Muslim 2699</i></p>
         <div class="educatie-slides-content">
+        <?php if (empty($education)): ?>
+            <div class="empty-state">
+                <h4>Momenteel geen lessen beschikbaar</h4>
+                <p>Er staan op dit moment geen educatieve activiteiten gepland. Kom later terug of schrijf je in voor onze nieuwsbrief.</p>
+            </div>
+        <?php else: ?>
         <?php foreach($education as $educationItem): ?>
-<div class="educatie-slide">
-    <div class="slide-info">
-        <div class="image-carousel">
-            <img class="educatie-slide-img" src="public/img/educatie/<?= $educationItem['img_file'] ?>" alt="<?= $educationItem['title'] ?>">
+        <?php
+            $excerpt = strip_tags($educationItem['description']);
+            if (function_exists('mb_strimwidth')) {
+                $excerpt = mb_strimwidth($excerpt, 0, 160, '…');
+            } else {
+                $excerpt = substr($excerpt, 0, 160) . (strlen($excerpt) > 160 ? '…' : '');
+            }
+            if (trim($excerpt) === '') {
+                $excerpt = 'Klik op "Lees meer" voor alle details.';
+            }
+        ?>
+        <div class="educatie-slide">
+            <div class="card-media">
+                <img class="educatie-slide-img" src="public/img/educatie/<?= $educationItem['img_file'] ?>" alt="<?= $educationItem['title'] ?>">
+            </div>
+            <div class="event-slide-text">
+                <h4><?= $educationItem['title'] ?></h4>
+                <p class="event-date"><?= $educationItem['undertitle'] ?></p>
+                <p class="event-excerpt"><?= $excerpt ?></p>
+                <button class="slide-button" type="button">Lees meer</button>
+            </div>
+            <div class="description hidden">
+                <?= $educationItem['description'] ?>
+            </div>
         </div>
-    </div>
-    <div class="event-slide-text">
-        <h4><?= $educationItem['title'] ?></h4>
-        <p><?= $educationItem['undertitle'] ?></p>
-        <button class="slide-button">Lees meer</button>
-    </div>
-    <div class="description hidden">
-        <?= $educationItem['description'] ?>
-    </div>
-</div>
 
         <?php endforeach; ?>
+        <?php endif; ?>
         </div>
     </div>
 </section>
@@ -97,12 +114,18 @@
 
     // Attach event listeners to education slides
     document.querySelectorAll('.educatie-slide').forEach(function(slide) {
-        slide.addEventListener('click', function(event) {
+        var button = slide.querySelector('.slide-button');
+        var imageEl = slide.querySelector('.educatie-slide-img');
+        var descriptionEl = slide.querySelector('.description');
+
+        if (!button || !imageEl || !descriptionEl) {
+            return;
+        }
+
+        button.addEventListener('click', function(event) {
             event.preventDefault();
-            var image = slide.querySelector('.educatie-slide-img').src;
             var title = slide.querySelector('h4').textContent;
-            var description = slide.querySelector('.description').innerHTML;
-            openModal(image, title, description);
+            openModal(imageEl.src, title, descriptionEl.innerHTML);
         });
     });
 
