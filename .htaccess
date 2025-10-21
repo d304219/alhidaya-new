@@ -1,67 +1,24 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    
+    # Main pages
     RewriteRule ^sponsor$ donatie.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^contact$ contact.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^islam$ deislam.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^overons$ overons.php [L]
-</IfModule>
-
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^algemeen$ algemeen.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^privacy$ privacy.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^educatie$ educatie.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^seminar$ seminar.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
     RewriteRule ^vrijwilligers$ vrijwilligers.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^iftarbekostigen$ iftarbekostigen.php [L]
-</IfModule>
-
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^ramadancup$ ramadancup.php [L]
-</IfModule>
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^Itikaf Itikaf.php [L]
-</IfModule>
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^donatieactie donatieactie.php [L]
-</IfModule>
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^korancompetitie korancompetitie.php [L]
+    RewriteRule ^iftarbekostigen$ iftarbekostigen.php [L]
+    RewriteRule ^ramadancup$ ramadancup.php [L]
+    RewriteRule ^Itikaf$ Itikaf.php [L]
+    RewriteRule ^donatieactie$ donatieactie.php [L]
+    RewriteRule ^korancompetitie$ korancompetitie.php [L]
+    RewriteRule ^events$ events.php [L]
+    
+    # Show pages with parameters (using direct file access for now)
+    # RewriteRule ^event/([0-9]+)$ event-show.php?id=$1 [L]
+    # RewriteRule ^educatie-show/([0-9]+)$ educatie-show.php?id=$1 [L]
 </IfModule>

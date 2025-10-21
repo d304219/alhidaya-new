@@ -120,7 +120,7 @@ p {
   justify-content: center;
   height: 85vh;
   display: flex;
-  background-image: url("../img/bgPhoto1Blur.jpg");
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--jongeren-color) 100%);
   background-size: cover;
   background-position: center;
 }
@@ -160,42 +160,23 @@ p {
   flex: 1;
 }
 
-/* Mini Navigation */
-.miniNav {
-  padding: 15px;
-  justify-content: space-around;
-  background-color: var(--main-color);
-  height: 51px;
-  display: flex;
-  flex-direction: row;
-}
-
-.socialsNav {
-  width: 15%;
+/* Navigation Socials */
+.navSocials {
   display: flex;
   align-items: center;
   gap: 15px;
-  justify-content: space-between;
+  margin-left: 20px;
 }
 
-.socialsNav li a i {
+.navSocials a i {
   text-shadow: 0 0 3px var(--jongeren-color);
-  font-size: var(--h3-size);
-  color: #ffffff;
+  font-size: var(--h4-size);
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
-.miniNavInfo {
-  gap: 20px;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  width: 37%;
-}
-
-.miniNavInfo a {
-  gap: 8px;
-  display: flex;
-  align-items: center;
+.navSocials a i:hover {
+  color: var(--jongeren-color);
 }
 
 /* Main Navigation */
@@ -215,8 +196,15 @@ nav {
 
 .navList {
   display: flex;
+<<<<<<< ours
   justify-content: space-between;
+  align-items: center;
+  width: 85%;
+=======
+  align-items: center;
+  gap: 2rem;
   width: 75%;
+>>>>>>> theirs
   transition: top 0.3s ease, opacity 0.3s ease;
   -webkit-transition: top 0.3s ease, opacity 0.3s ease;
   top: -500px;
@@ -225,12 +213,24 @@ nav {
 
 .navGroup{
   display: flex;
-  width: 70%;
+<<<<<<< ours
+  width: 60%;
   justify-content: space-between;
+=======
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+>>>>>>> theirs
   transition: top 0.3s ease, opacity 0.3s ease;
   -webkit-transition: top 0.3s ease, opacity 0.3s ease;
   top: -500px;
   opacity: 1;
+}
+
+.navList .sponsor2 {
+  margin-left: auto;
 }
 
 .navList a {
@@ -361,11 +361,7 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 50px;
-}
-
-.prayerTimesBlock iframe {
-  width: 100%;
+  gap: 30px;
 }
 
 .prayerTimesText {
@@ -374,6 +370,41 @@ nav {
 
 .prayerTimesText h2, .prayerTimesText h3 {
   color: var(--text-color);
+}
+
+.prayerTimesContent {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.mawaqitSection, .youtubeSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mawaqitSection h4, .youtubeSection h4 {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.youtubeVideos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.youtubeVideo {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.youtubeVideo iframe {
+  border-radius: 10px;
 }
 
 
@@ -463,6 +494,49 @@ footer {
   width: 100%;
 }
 
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+  font-size: 30px;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
 /* Sponsor */
 .sponsor1 {
   display: none;
@@ -483,9 +557,6 @@ footer {
     display: none;
   }
 
-  .miniNav {
-    display: none !important;
-  }
 
   .blur {
     height: 100vh !important;
@@ -494,6 +565,14 @@ footer {
   .navGroup {
     display: flex;
     flex-direction: column;
+    width: 100%;
+  }
+
+  .navSocials {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    gap: 20px;
   }
 
   .navList {
@@ -504,6 +583,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
     height: auto !important;
     width: 100% !important;
     transform: translate(-12.5%);
@@ -512,6 +592,10 @@ footer {
     -webkit-transition: 0.4s ease;
     padding-bottom: 25px;
     z-index: -1;
+  }
+
+  .navList .sponsor2 {
+    margin-left: 0;
   }
 
   .navList li {
@@ -705,6 +789,228 @@ footer {
 @media only screen and (max-width: 768px) {
   .prayerTimes {
     padding: 30px 0;
+  }
+  
+  .prayerTimesContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .youtubeVideos {
+    gap: 10px;
+  }
+  
+  .youtubeVideo iframe {
+    height: 150px;
+  }
+}
+
+/* Educatie Page Styles */
+.educatie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.educatie-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--main-color) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.hadith-source {
+  font-style: italic;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.educatie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.educatie-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(210, 194, 168, 0.3);
+}
+
+.educatie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.educatie-image {
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.educatie-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.educatie-card:hover .educatie-image img {
+  transform: scale(1.05);
+}
+
+.educatie-info {
+  padding: 1.5rem;
+}
+
+.educatie-info h4 {
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.educatie-subtitle {
+  color: var(--secondary-color);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Card Link Styles */
+.events-slide-link, .educatie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.events-slide-link:hover, .educatie-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.events-slide-link .events-slide, .educatie-card-link .educatie-card {
+  transition: all 0.3s ease;
+}
+
+.events-slide-link:hover .events-slide, .educatie-card-link:hover .educatie-card {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Show Page Styles */
+.show-page-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.show-page-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.show-page-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.show-page-info {
+  flex: 1;
+  padding: 1rem 0;
+}
+
+.show-page-meta {
+  margin-bottom: 1.5rem;
+}
+
+.event-date, .education-subtitle {
+  background: var(--main-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.show-page-description {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.show-page-description h5 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.show-page-description p {
+  margin-bottom: 1rem;
+}
+
+.show-page-description ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.show-page-description li {
+  margin-bottom: 0.5rem;
+}
+
+.show-page-actions {
+  margin-top: 2rem;
+}
+
+/* Responsive Design for Show Pages */
+@media only screen and (max-width: 768px) {
+  .show-page-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .show-page-image {
+    max-width: 100%;
+  }
+  
+  .show-page-description {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Design for Educatie */
+@media only screen and (max-width: 768px) {
+  .educatie-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .educatie-intro {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .intro-text p {
+    font-size: 1.1rem;
+  }
+  
+  .educatie-image {
+    height: 200px;
   }
 }
 

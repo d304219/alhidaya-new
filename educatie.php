@@ -25,100 +25,39 @@
 ?>
 
     <section class="wrapper section">
-    <div class="block-content">
-        <h3>Kennis Vergaren</h3>
-        <p>De Profeet ﷺ zei : "Wie een pad bewandelt op zoek naar kennis, Allah zal voor hem het pad naar het Paradijs gemakkelijk maken. Mensen komen niet samen in de huizen van Allah, om het boek van Allah te reciteren en het samen te bestuderen, maar de rust zal op hen neerdalen, genade zal hen bedekken, engelen zullen hen omringen, en Allah zal hen vermelden aan degenen die dicht bij hem staan."</p>
-        <p><i>- Ṣaḥīḥ Muslim 2699</i></p>
-        <div class="educatie-slides-content">
-        <?php foreach($education as $educationItem): ?>
-<div class="educatie-slide">
-    <div class="slide-info">
-        <div class="image-carousel">
-            <img class="educatie-slide-img" src="public/img/educatie/<?= $educationItem['img_file'] ?>" alt="<?= $educationItem['title'] ?>">
+        <div class="block-content educatie-content">
+            <div class="educatie-intro">
+                <h3>Kennis Vergaren</h3>
+                <div class="intro-text">
+                    <p>De Profeet ﷺ zei : "Wie een pad bewandelt op zoek naar kennis, Allah zal voor hem het pad naar het Paradijs gemakkelijk maken. Mensen komen niet samen in de huizen van Allah, om het boek van Allah te reciteren en het samen te bestuderen, maar de rust zal op hen neerdalen, genade zal hen bedekken, engelen zullen hen omringen, en Allah zal hen vermelden aan degenen die dicht bij hem staan."</p>
+                    <p class="hadith-source"><i>- Ṣaḥīḥ Muslim 2699</i></p>
+                </div>
+            </div>
+            
+            <div class="educatie-grid">
+                <?php foreach($education as $educationItem): ?>
+                <a href="educatie-show.php?id=<?= $educationItem['id'] ?>" class="educatie-card-link">
+                    <div class="educatie-card">
+                        <div class="educatie-image">
+                            <img src="public/img/educatie/<?= $educationItem['img_file'] ?>" alt="<?= $educationItem['title'] ?>">
+                        </div>
+                        <div class="educatie-info">
+                            <h4><?= $educationItem['title'] ?></h4>
+                            <p class="educatie-subtitle"><?= $educationItem['undertitle'] ?></p>
+                            <span class="slide-button">Lees meer</span>
+                        </div>
+                        <div class="description hidden">
+                            <?= $educationItem['description'] ?>
+                        </div>
+                    </div>
+                </a>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
-    <div class="event-slide-text">
-        <h4><?= $educationItem['title'] ?></h4>
-        <p><?= $educationItem['undertitle'] ?></p>
-        <button class="slide-button">Lees meer</button>
-    </div>
-    <div class="description hidden">
-        <?= $educationItem['description'] ?>
-    </div>
-</div>
+    </section>
 
-        <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
-    <!-- Modal Structure -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-
-          <div class="modal-top">
-            <h4 id="modal-title"></h4>
-            <span class="close">&times;</span>
-          </div>
-
-        <div class="modal-info">
-          <div class="modal-image">
-              <img id="modal-img" src="" alt="">
-          </div>
-          <div class="modal-text">
-              <p id="modal-description"></p>
-          </div>
-        </div>
-
-        </div>
-    </div>
 
     <?php require 'resources/views/components/footer.php';?>
 
-    <script>document.addEventListener('DOMContentLoaded', function() {
-    // Get the modal
-    var modal = document.getElementById("modal");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // Get the modal content elements
-    var modalImg = document.getElementById("modal-img");
-    var modalTitle = document.getElementById("modal-title");
-    var modalDescription = document.getElementById("modal-description");
-
-    // Function to open the modal
-    function openModal(image, title, description) {
-        modal.style.display = "flex";
-        modalImg.src = image;
-        modalTitle.textContent = title;
-        modalDescription.innerHTML = description;
-    }
-
-    // Attach event listeners to education slides
-    document.querySelectorAll('.educatie-slide').forEach(function(slide) {
-        slide.addEventListener('click', function(event) {
-            event.preventDefault();
-            var image = slide.querySelector('.educatie-slide-img').src;
-            var title = slide.querySelector('h4').textContent;
-            var description = slide.querySelector('.description').innerHTML;
-            openModal(image, title, description);
-        });
-    });
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
-
-    </script>
 </body>
 </html>

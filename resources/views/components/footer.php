@@ -61,3 +61,10 @@
         <p>&copy; 2025 Al Hidaya Breda. All rights reserved.</p>
     </div>
 </footer>
+
+<!-- Floating WhatsApp Button -->
+<div class="whatsapp-float">
+    <a target="_blank" href="https://api.whatsapp.com/send/?phone=31638017408&text&type=phone_number&app_absent=0">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
