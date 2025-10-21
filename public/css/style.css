@@ -215,7 +215,8 @@ nav {
 
 .navList {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
   width: 75%;
   transition: top 0.3s ease, opacity 0.3s ease;
   -webkit-transition: top 0.3s ease, opacity 0.3s ease;
@@ -225,12 +226,19 @@ nav {
 
 .navGroup{
   display: flex;
-  width: 70%;
-  justify-content: space-between;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   transition: top 0.3s ease, opacity 0.3s ease;
   -webkit-transition: top 0.3s ease, opacity 0.3s ease;
   top: -500px;
   opacity: 1;
+}
+
+.navList .sponsor2 {
+  margin-left: auto;
 }
 
 .navList a {
@@ -504,6 +512,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
     height: auto !important;
     width: 100% !important;
     transform: translate(-12.5%);
@@ -512,6 +521,10 @@ footer {
     -webkit-transition: 0.4s ease;
     padding-bottom: 25px;
     z-index: -1;
+  }
+
+  .navList .sponsor2 {
+    margin-left: 0;
   }
 
   .navList li {

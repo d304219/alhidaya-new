@@ -57,25 +57,32 @@
   padding: 1rem 0;
 }
 
-.events-slide {
+.events-slide,
+.educatie-slide {
+  position: relative;
   display: flex;
   flex-direction: column;
-  flex: 0 0 auto;
-  width: 300px;
-  scroll-snap-align: start;
-  gap: 0.5rem;
-  justify-content: space-between;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  padding: 1.5rem;
   border-radius: 20px;
-  background-color: var(--other-color);
+  background-color: var(--white-color);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  overflow: hidden; /* Ensure child elements don't overflow */
+  overflow: hidden;
 }
 
-.events-slide:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+.events-slide {
+  flex: 0 0 auto;
+  width: min(320px, 85vw);
+  scroll-snap-align: start;
+  justify-content: space-between;
+}
+
+.events-slide:hover,
+.educatie-slide:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------------------------------- */
@@ -127,70 +134,35 @@
 
 /* Existing CSS styles for slides and modals are already included */
 
-.educatie-slide {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Adjust space between elements inside the slide */
-    padding: 1.5rem; /* Increase padding for better spacing */
-    border-radius: 20px;
-    background-color: var(--white-color);
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.educatie-slide:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.educatie-slide:hover .slide-button {
-    background-color: var(--main-color);
-}
-
+.events-slide .slide-info,
 .educatie-slide .slide-info {
-    overflow: hidden; /* Ensure child elements don't overflow */
-    border-radius: 20px;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
 .educatie-slide .educatie-slide-img {
-    width: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
 }
 
-
-.educatie-slide .event-slide-text {
-    padding: 1rem;
-    background-color: var(--white-color);
-    border-radius: 0 0 8px 8px;
-    text-align: center;
+.event-slide-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  color: var(--secondary-color);
 }
 
-.educatie-slide .event-slide-text h4 {
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
+.event-slide-text h4 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
 }
 
-.educatie-slide .event-slide-text p {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.educatie-slide .slide-button {
-    all: unset;
-    width: 100%;
-    border-radius: 8px;
-    padding: 0.75rem 0;
-    color: var(--white-color);
-    font-weight: 800;
-    background-color: var(--secondary-color);
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
+.event-slide-text p {
+  color: var(--secondary-color);
 }
 
 
@@ -199,11 +171,11 @@
 /* ---------------------------------- */
 
 .educatie-slide .educatie-slide-img,
-.events-slide img {
-  border-radius: 8px 8px 0 0;
+.events-slide .image-carousel img,
+.educatie-slide .image-carousel img {
+  border-radius: 16px;
   width: 100%;
   object-fit: cover;
-  display: block;
 }
 
 
@@ -216,7 +188,6 @@
 .image-carousel img {
   display: none;
   width: 100%;
-  border-radius: 8px 8px 0 0;
 }
 
 .image-carousel img.active {
@@ -227,26 +198,9 @@
 /*            Event Text              */
 /* ---------------------------------- */
 
-.event-slide-text {
-  padding: 1rem;
-  background-color: var(--white-color);
-  border-radius: 0 0 8px 8px;
-  text-align: center;
-}
-
-.event-slide-text h4 {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.5rem;
-}
-
-.event-slide:hover .event-slide-text {
+.events-slide:hover .event-slide-text h4,
+.educatie-slide:hover .event-slide-text h4 {
   color: var(--main-color);
-}
-
-.event-slide-text p {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
 }
 
 /* ---------------------------------- */
@@ -277,7 +231,9 @@
 }
 
 .events-slide:hover .slide-button,
-.events-slide:focus .slide-button {
+.events-slide:focus .slide-button,
+.educatie-slide:hover .slide-button,
+.educatie-slide:focus .slide-button {
   background-color: var(--main-color);
 }
 
