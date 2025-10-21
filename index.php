@@ -68,25 +68,50 @@
         <div class="events-wrapper">
             <button class="slide-arrow left-arrow" aria-label="Previous Slide">&lt;</button>
             <div class="events-slides-content">
-            <?php foreach($events as $eventsItem): ?>
+            <?php if (empty($events)): ?>
+                <div class="empty-state">
+                    <h4>Geen evenementen gepland</h4>
+                    <p>Momenteel staan er geen evenementen op de planning. Houd onze kanalen in de gaten voor toekomstige activiteiten.</p>
+                </div>
+            <?php else: ?>
+                <?php foreach($events as $eventsItem): ?>
+                <?php
+                    $formattedDate = '';
+                    if (!empty($eventsItem['date'])) {
+                        $timestamp = strtotime($eventsItem['date']);
+                        $formattedDate = $timestamp ? date('d-m-Y', $timestamp) : $eventsItem['date'];
+                    }
+                    $excerpt = strip_tags($eventsItem['description']);
+                    if (function_exists('mb_strimwidth')) {
+                        $excerpt = mb_strimwidth($excerpt, 0, 140, '…');
+                    } else {
+                        $excerpt = substr($excerpt, 0, 140) . (strlen($excerpt) > 140 ? '…' : '');
+                    }
+                    if (trim($excerpt) === '') {
+                        $excerpt = 'Klik op "Lees meer" voor alle details.';
+                    }
+                ?>
                 <div class="events-slide">
-                    <div class="slide-info">
-                        <div class="image-carousel">
-                                <img class="image" src="public/img/events/<?= $eventsItem['img_file'] ?>" alt="<?= $eventsItem['title'] ?>">
-                        </div>
+                    <div class="card-media">
+                        <img class="image" src="public/img/events/<?= $eventsItem['img_file'] ?>" alt="<?= $eventsItem['title'] ?>">
+                        <?php if ($formattedDate): ?>
+                        <span class="card-badge"><?= $formattedDate ?></span>
+                        <?php endif; ?>
                     </div>
                     <div class="event-slide-text">
                         <h4><?= $eventsItem['title'] ?></h4>
-                        <p><?= $eventsItem['date'] ?></p>
-                        <button class="slide-button">Lees meer</button>
+                        <?php if ($formattedDate): ?>
+                        <p class="event-date"><?= $formattedDate ?></p>
+                        <?php endif; ?>
+                        <p class="event-excerpt"><?= $excerpt ?></p>
+                        <button class="slide-button" type="button">Lees meer</button>
                     </div>
                     <div class="description hidden">
                         <?= $eventsItem['description'] ?>
                     </div>
                 </div>
                 <?php endforeach; ?>
-
-
+            <?php endif; ?>
             </div>
             <button class="slide-arrow right-arrow" aria-label="Next Slide">&gt;</button>
         </div>
@@ -124,36 +149,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideContainer = document.querySelector('.events-slides-content');
     const leftArrow = document.querySelector('.left-arrow');
     const rightArrow = document.querySelector('.right-arrow');
-    const slideWidth = document.querySelector('.events-slide').offsetWidth;
+    const firstSlide = document.querySelector('.events-slide');
+    const slideWidth = firstSlide ? firstSlide.offsetWidth : 0;
 
-    leftArrow.addEventListener('click', () => {
-        slideContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
-    });
+    if (!firstSlide) {
+        if (leftArrow) leftArrow.style.display = 'none';
+        if (rightArrow) rightArrow.style.display = 'none';
+    }
 
-    rightArrow.addEventListener('click', () => {
-        slideContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
-    });
-
-    // Image Carousel code
-    document.querySelectorAll('.events-slide').forEach(slide => {
-        let currentIndex = 0;
-        const images = slide.querySelectorAll('.image-carousel img');
-        images[currentIndex].classList.add('active');
-
-        slide.addEventListener('click', () => {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
+    if (slideContainer && leftArrow && rightArrow && slideWidth) {
+        leftArrow.addEventListener('click', () => {
+            slideContainer.scrollBy({ left: -slideWidth, behavior: 'smooth' });
         });
 
-        // Modal code
-        slide.addEventListener('click', function() {
-            const imageSrc = images[currentIndex].src;
-            const title = slide.querySelector('h4').textContent;
-            const description = slide.querySelector('.description').innerHTML;
-            openModal(imageSrc, title, description);
+        rightArrow.addEventListener('click', () => {
+            slideContainer.scrollBy({ left: slideWidth, behavior: 'smooth' });
         });
-    });
+    }
 
     // Modal related code
     var modal = document.getElementById("modal");
@@ -161,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var modalImg = document.getElementById("modal-img");
     var modalTitle = document.getElementById("modal-title");
     var modalDescription = document.getElementById("modal-description");
-    var buttons = document.querySelectorAll('.slide-button');
 
     function openModal(image, title, description) {
         modal.style.display = "flex";
@@ -170,14 +181,17 @@ document.addEventListener('DOMContentLoaded', function() {
         modalDescription.innerHTML = description;
     }
 
-    buttons.forEach(function(button) {
+    document.querySelectorAll('.events-slide').forEach(function(slide) {
+        var button = slide.querySelector('.slide-button');
+        var image = slide.querySelector('.card-media img');
+        var description = slide.querySelector('.description');
+        if (!button || !image || !description) {
+            return;
+        }
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            var slide = button.parentElement;
-            var image = slide.querySelector('.image.active').src;
             var title = slide.querySelector('h4').textContent;
-            var description = slide.querySelector('.description').innerHTML;
-            openModal(image, title, description);
+            openModal(image.src, title, description.innerHTML);
         });
     });
 
